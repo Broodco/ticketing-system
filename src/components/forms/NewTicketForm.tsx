@@ -5,7 +5,6 @@ import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Fragment, useRef, useState } from "react";
 import { classNames } from "@/lib/utils";
 import TicketContentEditor from "@/components/forms/partials/TicketContentEditor";
-import { useRouter } from "next/navigation";
 
 interface NewTicketFormProps {
   users: {
@@ -24,7 +23,6 @@ export default function NewTicketForm(props: NewTicketFormProps) {
   const [content, setContent] = useState("");
   const [selectedUser, setSelectedUser] = useState(noAssignee);
   const titleRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -34,8 +32,6 @@ export default function NewTicketForm(props: NewTicketFormProps) {
         assignee: selectedUser,
         content: content,
       });
-
-      router.push("/");
     }
   };
 

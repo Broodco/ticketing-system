@@ -13,8 +13,27 @@ export default function Create() {
     content: String;
   }) => {
     "use server";
-    // Do stuff here
-    console.log(title, assignee, content);
+
+    const hostname =
+      process.env.NODE_ENV === "production"
+        ? `https://${process.env.VERCEL_URL}`
+        : `${process.env.HOST}`;
+
+    try {
+      const body = {
+        title: title,
+        assignee: assignee,
+        content: content,
+      };
+
+      await fetch(`${hostname}/api/tickets/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

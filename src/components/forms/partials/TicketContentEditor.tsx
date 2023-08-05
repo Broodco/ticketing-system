@@ -29,6 +29,12 @@ export default function TicketContentEditor(props: TicketContentEditorProps) {
     onUpdate({ editor }) {
       props.onChange(editor.getHTML());
     },
+    editorProps: {
+      attributes: {
+        class:
+          "focus:border focus:border-amber-500 prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl",
+      },
+    },
   });
 
   return (
