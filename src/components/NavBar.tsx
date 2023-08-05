@@ -11,7 +11,7 @@ import { classNames } from "@/lib/utils";
 
 const comfortaa = Comfortaa({ subsets: ["latin"] });
 
-export default function Header() {
+export default function NavBar() {
   const { data: session, status } = useSession();
   const currentPathname = usePathname();
   const isActive: (pathname: string) => boolean = (pathname) =>
@@ -153,7 +153,7 @@ export default function Header() {
                 </Disclosure.Button>
               )}
             </div>
-            <div className="border-t border-gray-200 pb-3 pt-4">
+            <div className="border-t border-gray-200 pt-4">
               {session && (
                 <>
                   <div className="flex items-center px-4 sm:px-6">

@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Providers from "@/app/provider";
-import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className="w-full">
       <body className={"w-full bg-zinc-100 " + inter.className}>
         <Providers>
-          <Header />
+          <NavBar />
           {children}
         </Providers>
       </body>
