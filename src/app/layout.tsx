@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Providers from "@/app/provider";
+import AuthProvider from "@/app/context/AuthProvider";
 import NavBar from "@/components/layout/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-full">
       <body className={"w-full bg-zinc-100 min-w-fit" + inter.className}>
-        <Providers>
+        <AuthProvider>
           <NavBar />
           {children}
-        </Providers>
+        </AuthProvider>
       </body>
     </html>
   );

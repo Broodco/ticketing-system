@@ -93,7 +93,6 @@ export default function NavBar() {
                   <p className="text-sm">({session.user?.email})</p>
                 </div>
                 {session.user?.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={session.user?.image}
                     alt="Avatar"
@@ -105,12 +104,13 @@ export default function NavBar() {
                     New ticket
                   </button>
                 </Link>
-                <button
+                <Link
+                  href="/api/auth/signout"
                   onClick={() => signOut()}
-                  className="hover:text-amber-600 hidden md:block"
+                  className="hover:text-amber-600 hidden md:block h-full py-2 px-4"
                 >
                   Log Out
-                </button>
+                </Link>
               </div>
             ) : (
               <div>
