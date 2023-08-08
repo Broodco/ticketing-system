@@ -1,6 +1,7 @@
 import PageHeader from "@/components/layout/PageHeader";
 import NewTicketForm from "@/components/forms/NewTicketForm";
 import { User } from "@prisma/client";
+import { headers } from "next/headers";
 
 export default function Create() {
   const createNewTicket = async ({
@@ -13,6 +14,8 @@ export default function Create() {
     content: String;
   }) => {
     "use server";
+    const headersList = headers();
+    const token = headersList.get("Authorization");
 
     const hostname =
       process.env.NODE_ENV === "production"
@@ -28,8 +31,12 @@ export default function Create() {
 
       await fetch(`${hostname}/api/tickets/create`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(body),
+        cache: "no-cache",
       });
     } catch (error) {
       console.log(error);
